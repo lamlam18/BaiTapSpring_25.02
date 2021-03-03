@@ -29,7 +29,11 @@ public class UserController {
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String index(ModelMap model) {
 		List<UserDto> dtos = userService.findAll();
+		for (UserDto userDto : dtos) {
+			System.out.println(userDto.getFullname());
+		}
 		model.addAttribute("userList", dtos);
+		
 		return "user/index";
 	}
 

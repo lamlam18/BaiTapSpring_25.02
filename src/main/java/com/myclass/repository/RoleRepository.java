@@ -4,14 +4,8 @@ import java.util.List;
 
 import com.myclass.entity.Role;
 
-public interface RoleRepository {
+public interface RoleRepository extends BaseRepository<Role, Integer>{
 
-	List<Role> findAll();
 
-	void save(Role entity);
-
-	void remove(int id);
-
-	Role getById(int id);
 
 }

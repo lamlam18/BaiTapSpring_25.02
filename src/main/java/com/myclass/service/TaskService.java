@@ -8,4 +8,12 @@ public interface TaskService {
 
 	List<TaskDto> findAll();
 
+	int delete(int id);
+
+	int add(TaskDto dto);
+
+	TaskDto findById(int id);
+
+	int edit(TaskDto dto);
+
 }

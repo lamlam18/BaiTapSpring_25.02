@@ -18,39 +18,43 @@ import com.myclass.repository.UserRepository;
 @Repository
 @Scope("prototype")
 @Transactional (rollbackOn = Exception.class)
-public class UserRepositoryImpl implements UserRepository{
+public class UserRepositoryImpl extends BaseRepositoryImpl<User, Integer> implements UserRepository{
 
-	private SessionFactory sessionFactory;
 	public UserRepositoryImpl(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+		super(sessionFactory, User.class);
+		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
 	public List<User> findAll() {
 		// TODO Auto-generated method stub
-		List<User> userList = new ArrayList<User>();
-		Session session = sessionFactory.getCurrentSession();
-		Query<User> query = session.createQuery("FROM User" , User.class);
 		
-		userList = query.getResultList();
-		return userList;
-	}
-
-	public void save(User entity) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(entity);
-	}
-
-	public void remove(int id) {		
-		Session session = sessionFactory.getCurrentSession();
-		User entity = session.find(User.class, id);
-		session.remove(entity);
-		
+		return super.findAll();
 	}
 	
-	public User findById(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		return session.find(User.class, id);
+	@Override
+	public User findById(Integer id) {
+		// TODO Auto-generated method stub
+		return super.findById(id);
 	}
+	
+	@Override
+	public void remove(Integer id) {
+		// TODO Auto-generated method stub
+		super.remove(id);
+	}
+	
+	@Override
+	public void save(User entity) {
+		// TODO Auto-generated method stub
+		super.save(entity);
+	}
+	
+	@Override
+	public void update(User entity) {
+		// TODO Auto-generated method stub
+		super.update(entity);
+	}
+
 
 }

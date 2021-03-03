@@ -17,6 +17,16 @@ public class TaskDto {
 	
 	
 	
+	public TaskDto(String name, Date startDate, Date endDate, int projectId, int userId, int statusId) {
+		super();
+		this.name = name;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.projectId = projectId;
+		this.userId = userId;
+		this.statusId = statusId;
+	}
+	
 	public TaskDto() {
 		super();
 	}

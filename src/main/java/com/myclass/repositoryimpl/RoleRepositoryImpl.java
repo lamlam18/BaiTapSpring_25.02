@@ -17,39 +17,43 @@ import com.myclass.repository.RoleRepository;
 @Repository
 @Scope("prototype")
 @Transactional (rollbackOn = Exception.class)
-public class RoleRepositoryImpl implements RoleRepository{
-	
-	private SessionFactory sessionFactory;
+public class RoleRepositoryImpl extends BaseRepositoryImpl<Role, Integer> implements RoleRepository{
+
 	public RoleRepositoryImpl(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+		super(sessionFactory, Role.class);
+		// TODO Auto-generated constructor stub
 	}
-
+	
+	@Override
 	public List<Role> findAll() {
-		List<Role> roles = new ArrayList<Role>();
-		Session session = sessionFactory.getCurrentSession();
-		Query<Role> query = session.createQuery("FROM Role" , Role.class);
-		roles = query.getResultList();
-		
-		return roles;
+		// TODO Auto-generated method stub
+		return super.findAll();
 	}
-
+	
+	@Override
+	public Role findById(Integer id) {
+		// TODO Auto-generated method stub
+		return super.findById(id);
+	}
+	
+	@Override
+	public void remove(Integer id) {
+		// TODO Auto-generated method stub
+		super.remove(id);
+	}
+	
+	@Override
 	public void save(Role entity) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(entity);
+		super.save(entity);
 	}
-
-	public void remove(int id) {
+	
+	@Override
+	public void update(Role entity) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		Role role = getById(id);
-		session.remove(role);
+		super.update(entity);
 	}
+	
 
-	public Role getById(int id) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		return session.find(Role.class, id);
-	}
 		
 }

@@ -60,14 +60,14 @@ public class RoleServiceImpl implements RoleService{
 
 	public RoleDto findById(int id) {
 		// TODO Auto-generated method stub
-		 roleRepository.getById(id);
+		 roleRepository.findById(id);
 		return null;
 	}
 
 	public int edit(RoleDto dto) {
 		// TODO Auto-generated method stub
 		try {
-			Role role = roleRepository.getById(dto.getId());
+			Role role = roleRepository.findById(dto.getId());
 			if (role == null)
 				return -1;
 			role.setName(dto.getName());

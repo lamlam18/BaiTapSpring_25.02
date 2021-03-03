@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,11 +34,32 @@ public class Task {
 	@Column(name = "statusId")
 	private int		statusId;
 	
+	@ManyToOne
+	@JoinColumn(name = "projectId" , insertable = false , updatable =false)
+	private Project project;
 	
+	@ManyToOne
+	@JoinColumn(name = "userId" ,  insertable = false , updatable =false)
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "statusID" ,  insertable = false , updatable =false)
+	private Status status;
 	
 	public Task() {
 		super();
 	}
+	
+	public Task(String name, Date startDate, Date endDate, int projectId, int userId, int statusId) {
+		super();
+		this.name = name;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.projectId = projectId;
+		this.userId = userId;
+		this.statusId = statusId;
+	}
+
 	public Task(int id, String name, Date startDate, Date endDate, int projectId, int userId, int statusId) {
 		super();
 		this.id = id;
@@ -47,6 +70,7 @@ public class Task {
 		this.userId = userId;
 		this.statusId = statusId;
 	}
+	
 	public int getId() {
 		return id;
 	}
